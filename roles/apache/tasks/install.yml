@@ -1,0 +1,28 @@
+---
+# tasks file for apache
+- name: check index.html in remote
+  stat:
+    path: /var/www/html/index.html
+  register: http_index
+
+- name: install apache
+  yum:
+    name: httpd
+    state: installed
+
+- name: create index.html custom
+  copy:
+    src: index.html
+    dest: /var/www/html/index.html
+    backup: yes
+  when: http_index.stat.exists == false
+
+- name: Check http_index status
+  debug: 
+    var: http_index
+
+- name: start apache
+  service:
+    name: httpd
+    state: started
+
