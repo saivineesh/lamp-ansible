@@ -9,4 +9,9 @@
   service:
     name: httpd
     state: restarted
+
+- name: creating a template for remote
+  template:
+    src: info.php.j2
+    dest: /var/www/html/info.php
 ...
