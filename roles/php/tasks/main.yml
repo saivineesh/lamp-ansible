@@ -11,7 +11,7 @@
     state: restarted
 
 - name: creating a template for remote
-  template:
-    src: info.php.j2
+  copy:
+    src: info.php
     dest: /var/www/html/info.php
 ...
