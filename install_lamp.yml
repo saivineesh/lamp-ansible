@@ -1,5 +1,7 @@
 ---
 - hosts: webserver
-  roles: 
+  roles:
+    - apache
     - mariadb
+    - php
 ...
